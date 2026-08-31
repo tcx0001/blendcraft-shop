@@ -208,7 +208,7 @@ function renderCheckout(){
         <select id="co-pay"><option value="card">Credit / Debit card</option><option value="paypal">PayPal</option><option value="bank">Bank transfer</option></select>
       </div>
       <div class="promo" style="background:var(--bg-soft);border:1px solid var(--line);border-left:4px solid var(--brand);border-radius:8px;padding:12px 16px;font-size:13px;color:#374151">
-        Payment is securely processed at checkout. After placing your order you'll receive a confirmation email with payment details. This demo storefront is ready to connect to your payment provider.
+        <b>How your order works:</b> After you send your order (via <b>WhatsApp</b> for the fastest response, or email), we'll confirm availability, send you a payment request, and ship within 1-3 business days with tracking.
       </div>
       <button class="btn btn-primary" style="width:100%;justify-content:center;margin-top:20px" onclick="placeOrder()">Place Order · ${money(total)}</button>
     </div>
