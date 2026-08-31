@@ -205,10 +205,10 @@ function renderCheckout(){
       </div>
       <div class="f-group"><label>Country</label><select id="co-country"><option>United States</option><option>United Kingdom</option><option>Canada</option><option>Germany</option><option>France</option><option>Australia</option><option>Other</option></select></div>
       <div class="f-group"><label>Payment method</label>
-        <select id="co-pay"><option value="card">Credit / Debit card</option><option value="paypal">PayPal</option><option value="bank">Bank transfer</option></select>
+        <select id="co-pay"><option value="bank">Bank transfer (T/T)</option><option value="paypal">PayPal</option><option value="western">Western Union</option><option value="other">Other — we'll confirm</option></select>
       </div>
       <div class="promo" style="background:var(--bg-soft);border:1px solid var(--line);border-left:4px solid var(--brand);border-radius:8px;padding:12px 16px;font-size:13px;color:#374151">
-        <b>How your order works:</b> After you send your order (via <b>WhatsApp</b> for the fastest response, or email), we'll confirm availability, send you a payment request, and ship within 1-3 business days with tracking.
+        <b>How your order works (offline payment):</b> After you send your order via <b>WhatsApp</b> (fastest) or email, we'll confirm availability, send you our payment details (bank transfer / PayPal / Western Union), and ship within 1-3 business days with tracking.
       </div>
       <button class="btn btn-primary" style="width:100%;justify-content:center;margin-top:20px" onclick="placeOrder()">Place Order · ${money(total)}</button>
     </div>
