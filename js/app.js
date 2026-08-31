@@ -154,6 +154,10 @@ function renderProductDetail(){
   document.title = p.name + ' — BlendCraft';
   const related = PRODUCTS.filter(x=>x.brand===p.brand && x.id!==p.id).slice(0,4);
   const relHTML = related.length ? `<div class="section related"><div class="sec-head"><h2>You may also like</h2></div><div class="grid" id="related-grid"></div></div>` : '';
+  // JSON-LD for SEO
+  const ld = { '@context':'https://schema.org','@type':'Product', name:p.name, image:PRODUCT_IMG[p.id]?location.origin+location.pathname.replace(/[^/]*$/,'')+PRODUCT_IMG[p.id]:'', description:p.desc, brand:{'@type':'Brand',name:p.brand}, sku:p.id, offers:{'@type':'Offer', priceCurrency:'USD', price:p.price, availability:'https://schema.org/InStock'}};
+  const oldLd = el('#product-ld'); if(oldLd) oldLd.remove();
+  const s = document.createElement('script'); s.id='product-ld'; s.type='application/ld+json'; s.textContent=JSON.stringify(ld); document.head.appendChild(s);
   wrap.innerHTML = `<div class="pd">
     <div class="pd-media">${mediaFor(p)}</div>
     <div class="pd-info">
@@ -226,13 +230,18 @@ function placeOrder(){
   const total = sub+shipping;
   const lines = c.map(i=>{ const p=byId(i.id); return p?`- ${p.name} × ${i.qty} = ${money(p.price*i.qty)}`:''; }).join('\n');
   const orderText = encodeURIComponent(`New order from ${name} (${email})\n\n${lines}\n\nSubtotal: ${money(sub)}\nShipping: ${shipping===0?'FREE':money(shipping)}\nTotal: ${money(total)}\n\nShipping to: ${((el('#co-addr')||{}).value||'')}, ${((el('#co-city')||{}).value||'')} ${((el('#co-zip')||{}).value||'')}, ${((el('#co-country')||{}).value||'')}`);
+  const emailLink = `mailto:${STORE_EMAIL}?subject=${encodeURIComponent('Order from ' + name)}&body=${orderText}`;
+  const waLink = `https://wa.me/${STORE_WHATSAPP}?text=${orderText}`;
   setCart([]);
   el('#checkout').innerHTML = `<div class="empty" style="padding:80px 20px">
     <div style="width:76px;height:76px;border-radius:50%;background:var(--teal);color:#fff;display:grid;place-items:center;margin:0 auto 20px"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></div>
     <h3>Thank you, ${name}!</h3>
-    <p style="color:var(--muted);max-width:460px;margin:10px auto">Your compatible-parts order has been prepared. Click below to send it to us so we can confirm payment and ship (${money(total)}, incl. shipping).</p>
-    <a class="btn btn-primary" href="mailto:${STORE_EMAIL}?subject=${encodeURIComponent('Order from ' + name)}&body=${orderText}">Send My Order</a>
-    <br style="margin-top:8px"><a href="shop.html" style="color:var(--muted);font-size:14px">Continue Shopping</a>
+    <p style="color:var(--muted);max-width:460px;margin:10px auto">Your compatible-parts order (${money(total)}, incl. shipping) is prepared. Send it to us and we'll confirm payment and ship within 1-3 business days.</p>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:8px">
+      <a class="btn btn-primary" href="${emailLink}">Send via Email</a>
+      <a class="btn btn-primary" style="background:#25D366" href="${waLink}" target="_blank" rel="noopener">Send via WhatsApp</a>
+    </div>
+    <br style="margin-top:10px"><a href="shop.html" style="color:var(--muted);font-size:14px">Continue Shopping</a>
   </div>`;
   toast('Order ready ✓');
 }
