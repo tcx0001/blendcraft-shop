@@ -38,10 +38,13 @@ Edit `js/data.js`. Each product is an object:
 - `art` — use one of the SVG keys: `blade`, `cup`, `jar`, `lid`, `gasket`, `tamper`, `container`, `set`, `ninja`.
 - Add/remove products freely; the catalog renders automatically.
 
-### 2. Put in real product photos
-Replacement parts are currently shown as clean, on-brand SVG illustrations. To use real photos:
-- Add photos to an `images/` folder, then change the `art` field to reference a photo, or replace the SVG in `ART`.
-- All imagery is local/inline — nothing is empty or remote-linked, so nothing can break or be blocked.
+### 2. Product images
+Real product photographs are now in place in `images/` (mapped in `js/app.js` -> `PRODUCT_IMG` and referenced via the product's `img`). These are real part photos:
+- `nb_blade.jpg`, `nb_cup_*.jpg`, `nb_lid.jpg`, `nb_gasket.jpg`, `nb_bundle.jpg`
+- `vm_wet_blade.jpg`, `vm_container.jpg`, `vm_tamper.jpg`
+- `ninja_blade.jpg`, `ninja_jar.jpg`
+
+To use your factory's own photos (recommended for the production version), replace the files in `images/` (keep the same filenames), or point a product to a new file via `PRODUCT_IMG` in `js/app.js`. New images must exist locally — nothing is remote-linked, so nothing can break.
 
 ### 3. Connect real payments (to make checkout fully automated)
 The demo checkout sends the order to the store email. To take payments automatically, connect a provider:
