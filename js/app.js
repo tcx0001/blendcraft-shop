@@ -20,7 +20,8 @@ const NAV = [
 ];
 function headerHTML(){
   const links = NAV.map(([t,h])=>`<a href="${h}">${t}</a>`).join('');
-  return `<div class="container header-inner">
+  return `<div class="announce">🚚 Free shipping on orders over $50 &nbsp;·&nbsp; 🔄 30-day returns &nbsp;·&nbsp; 💬 Chat on WhatsApp</div>
+    <div class="container header-inner">
     <a class="logo" href="index.html"><span class="dot"></span>BlendCraft<small style="margin-top:3px">compatible blender parts</small></a>
     <nav class="nav" id="nav">${links}
       <a href="https://github.com/tcx0001" style="display:none"></a>
