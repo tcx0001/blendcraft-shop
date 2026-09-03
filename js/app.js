@@ -7,11 +7,14 @@ const els = (sel, ctx) => Array.from((ctx || document).querySelectorAll(sel));
 const byId = id => PRODUCTS.find(p => p.id === id);
 const artFor = id => (ART[id] || '');
 const PRODUCT_IMG = {
-  'nb-cross-blade':'images/nb_blade.jpg','nb-cup-32':'images/nb_cup_32.jpg','nb-cup-24':'images/nb_cup_24.jpg','nb-cup-18':'images/nb_cup_18.jpg','nb-blade-cup-set':'images/nb_bundle.jpg','nb-lid':'images/nb_lid.jpg','nb-gasket':'images/nb_gasket.jpg','vm-wet-blade':'images/vm_wet_blade.jpg','vm-64oz-container':'images/vm_container.jpg','vm-tamper':'images/vm_tamper.jpg','ninja-blade':'images/ninja_blade.jpg','ninja-jar':'images/ninja_jar.jpg'
+  'nb-cross-blade':'images/nb_blade.webp','nb-cup-32':'images/nb_cup_32.webp','nb-cup-24':'images/nb_cup_24.webp','nb-cup-18':'images/nb_cup_18.webp','nb-blade-cup-set':'images/nb_bundle.webp','nb-lid':'images/nb_lid.webp','nb-gasket':'images/nb_gasket.webp','vm-wet-blade':'images/vm_wet_blade.webp','vm-64oz-container':'images/vm_container.webp','vm-tamper':'images/vm_tamper.webp','ninja-blade':'images/ninja_blade.webp','ninja-jar':'images/ninja_jar.webp'
 };
-const mediaFor = p => PRODUCT_IMG[p.id]
-  ? `<img class="media-img" src="${PRODUCT_IMG[p.id]}" alt="${p.name}" loading="lazy">`
-  : artFor(p.art);
+const mediaFor = p => {
+  const src = PRODUCT_IMG[p.id];
+  if(!src) return artFor(p.art);
+  const jpg = src.replace(/\.webp$/i, '.jpg');
+  return `<picture><source srcset="${src}" type="image/webp"><img class="media-img" src="${jpg}" alt="${p.name}" loading="lazy"></picture>`;
+};
 
 /* ---------- header / footer ---------- */
 const NAV = [
@@ -25,9 +28,7 @@ function headerHTML(){
   const links = NAV.map(([t,h])=>`<a href="${h}">${t}</a>`).join('');
   return `<div class="container header-inner">
     <a class="logo" href="index.html"><span class="dot"></span>BlendCraft<small style="margin-top:3px">compatible blender parts</small></a>
-    <nav class="nav" id="nav">${links}
-      <a href="https://github.com/tcx0001" style="display:none"></a>
-    </nav>
+    <nav class="nav" id="nav">${links}</nav>
     <div style="display:flex;align-items:center;gap:10px">
       <a href="https://wa.me/8613980077660" target="_blank" rel="noopener" title="Chat on WhatsApp" style="display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:#25D366;color:#fff;flex-shrink:0">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.4A10 10 0 1 0 12 2Zm5.3 14.3c-.2.6-1.2 1.2-1.7 1.2-.4 0-1 .1-3.2-.7-2.7-1.1-4.4-3.8-4.5-4-.1-.2-1.1-1.5-1.1-2.8s.7-1.9.9-2.2c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .7.5s.9 2.1 1 2.2c0 .2.1.4 0 .6-.4.8-.9 1-.6 1.5.6 1.1 1.6 2.2 2.6 2.9.5.4.8.3 1 .2.3-.1.7-.4 1-.7.3-.3.5-.6.7-.4l1.6.8c.2.1.4.2.5.3.1.2.1.7-.1 1.2Z"/></svg>
@@ -74,6 +75,18 @@ const PRODUCT_FILES = {
   'ninja-replacement-blade.html':'ninja-blade',
   'ninja-72oz-container.html':'ninja-jar'
 };
+const FILE_BY_ID = Object.fromEntries(Object.entries(PRODUCT_FILES).map(([f,id])=>[id,f]));
+const SITE_ORIGIN = 'https://tcx0001.github.io/blendcraft-shop/';
+function canonicalForProduct(id){
+  const f = FILE_BY_ID[id];
+  return f ? SITE_ORIGIN + f : '';
+}
+function setCanonical(href){
+  if(!href) return;
+  let l = document.querySelector('link[rel="canonical"]');
+  if(!l){ l = document.createElement('link'); l.rel='canonical'; document.head.appendChild(l); }
+  l.href = href;
+}
 function shortName(name){
   return String(name).replace(/\s+[—–-]\s+Compatible with.*$/i, '').trim() || name;
 }
@@ -255,6 +268,7 @@ function renderProductDetail(){
   if(!p){ wrap.innerHTML = `<div class="empty"><h3>Product not found</h3><a class="btn btn-primary" href="shop.html">Back to Shop</a></div>`; return; }
   const specs = (p.specs||[]).map(s=>`<div><span>${s[0]}</span><span>${s[1]}</span></div>`).join('');
   document.title = (p.seoTitle || p.name) + ' — BlendCraft';
+  setCanonical(canonicalForProduct(p.id));
   const related = PRODUCTS.filter(x=>x.brand===p.brand && x.id!==p.id).slice(0,4);
   const relHTML = related.length ? `<div class="section related"><div class="sec-head"><h2>You may also like</h2></div><div class="grid" id="related-grid"></div></div>` : '';
   // JSON-LD for SEO
@@ -388,7 +402,7 @@ function initContact(){
 }
 function initNewsletter(){
   const f = el('#newsletter-form'); if(!f) return;
-  f.addEventListener('submit', e=>{ e.preventDefault(); toast('Subscribed ✓'); f.reset(); });
+  f.addEventListener('submit', e=>{ e.preventDefault(); toast('Newsletter coming soon'); });
 }
 
 /* ---------- toast ---------- */
