@@ -80,123 +80,159 @@ const ART = {
 const PRODUCTS = [
   {
     id:'nb-cross-blade', brand:'NutriBullet', category:'Blades',
-    name:'Replacement Blade Compatible with NutriBullet 600 / Pro 900',
-    fits:'Compatible with NutriBullet 600W / Pro 900 (NB-101B)',
-    kw:'nutribullet replacement blade',
+    name:'Extractor Cross Blade — Compatible with NutriBullet 600W / 900W',
+    seoTitle:'Extractor Cross Blade Replacement | Compatible with NutriBullet 600W / 900W',
+    fits:'Fits NutriBullet 600W and Pro 900 (NB-101B).',
+    kw:'NutriBullet extractor blade, NutriBullet 600W blade, NutriBullet 900W replacement, NB-101B blade, blender blade replacement',
+    meta:'Premium stainless-steel extractor blade compatible with NutriBullet 600W and Pro 900. Smooth blending performance, leak-proof seal, BPA-free materials.',
     art:'blade', badge:'Best Seller', price:15.99, compareAt:22.99,
-    desc:'Keep your NutriBullet 600 / Pro 900 blending like new. This compatible replacement blade is precision-designed to fit NutriBullet 600W and Pro 900 blenders — a cost-effective replacement that delivers the performance you expect.',
-    points:['Exact-fit compatible with NutriBullet 600W / Pro 900 (NB-101B)','Made from quality, food-safe stainless steel with a food-grade silicone gasket','Easy to install — no special tools needed','Quality checked before dispatch'],
+    blurb:'Precision-engineered stainless-steel blade for smooth, consistent blending.',
+    desc:'Upgrade your NutriBullet with a precision-engineered extractor blade designed for smoother blends and long-lasting durability. Built from reinforced stainless steel and paired with a leak-proof silicone gasket, this compatible blade restores your blender’s original performance at a fraction of OEM cost. Perfect for smoothies, shakes, frozen fruit and daily meal prep.',
+    points:['Precision-engineered stainless-steel blade','Exact-fit for NutriBullet 600W / 900W','Leak-proof silicone gasket included','BPA-free, food-safe materials','Ideal for smoothies, shakes and frozen fruit'],
     specs:[['Compatible With','NutriBullet 600W / Pro 900 (NB-101B)'],['What’s Included','Cross / extractor blade + gasket'],['Blade','6-fin stainless steel'],['Gasket','Food-grade silicone O-ring'],['Material','Food-safe, BPA-free'],['Type','Compatible replacement (non-OEM)']]
   },
   {
     id:'nb-cup-32', brand:'NutriBullet', category:'Cups & Lids',
-    name:'Replacement 32oz Cup Compatible with NutriBullet 600 / Pro 900',
-    fits:'Compatible with NutriBullet 600W / Pro 900',
-    kw:'nutribullet 32 oz cup',
+    name:'32oz Tall Cup — Compatible with NutriBullet 600W / 900W',
+    seoTitle:'32oz Tall Cup Replacement | Compatible with NutriBullet 600W / 900W',
+    fits:'Fits NutriBullet 600W / 900W',
+    kw:'NutriBullet 32oz cup, NutriBullet tall cup replacement, NutriBullet 600W cup, BPA-free blender cup',
+    meta:'Durable BPA-free 32oz tall cup compatible with NutriBullet 600W and Pro 900. Perfect for smoothies, shakes and daily blending.',
     art:'cup', badge:'', price:11.99, compareAt:0,
-    desc:'Keep your NutriBullet 600 / Pro 900 blending like new. This compatible 32oz replacement cup is precision-designed to fit your NutriBullet blade assembly — a cost-effective spare for extra servings or a cracked cup.',
-    points:['Exact-fit compatible with NutriBullet 600W / Pro 900','Made from quality, food-grade BPA-free plastic','Easy to install — screws onto your blade assembly','Quality checked before dispatch'],
-    specs:[['Compatible With','NutriBullet 600W / Pro 900'],['What’s Included','32oz tall cup'],['Capacity','32 oz (946 ml)'],['Material','BPA-free, food-grade'],['Type','Compatible replacement (non-OEM)']]
+    blurb:'Durable BPA-free tall cup designed for larger smoothies and meal blends.',
+    desc:'A durable, BPA-free 32oz tall cup designed for larger smoothies and full-size blends. Crack-resistant, dishwasher-safe and perfectly compatible with NutriBullet 600W and Pro 900 models.',
+    points:['Large 32oz capacity','BPA-free Tritan material','Crack-resistant and dishwasher-safe','Fits NutriBullet 600W / 900W','Ideal for daily meal prep'],
+    specs:[['Compatible With','NutriBullet 600W / Pro 900'],['What’s Included','32oz tall cup'],['Capacity','32 oz (946 ml)'],['Material','BPA-free Tritan'],['Type','Compatible replacement (non-OEM)']]
   },
   {
     id:'nb-cup-24', brand:'NutriBullet', category:'Cups & Lids',
-    name:'Replacement 24oz Cup Compatible with NutriBullet 600 / Pro 900',
-    fits:'Compatible with NutriBullet 600W / Pro 900',
-    kw:'nutribullet 24 oz cup',
+    name:'24oz Cup — Compatible with NutriBullet 600W / 900W',
+    seoTitle:'24oz Cup Replacement | Compatible with NutriBullet 600W / 900W',
+    fits:'Fits NutriBullet 600W / 900W',
+    kw:'NutriBullet 24oz cup, NutriBullet replacement cup, single-serve blender cup',
+    meta:'Lightweight BPA-free 24oz cup designed for single-serve smoothies. Fits NutriBullet 600W and Pro 900 models.',
     art:'cup', badge:'', price:10.99, compareAt:0,
-    desc:'Keep your NutriBullet 600 / Pro 900 blending like new. This compatible 24oz replacement cup is precision-designed to fit your NutriBullet blade assembly — a cost-effective everyday cup size.',
-    points:['Exact-fit compatible with NutriBullet 600W / Pro 900','Made from quality, food-grade BPA-free plastic','Easy to install — no special tools needed','Quality checked before dispatch'],
+    blurb:'Lightweight BPA-free cup perfect for single-serve smoothies and quick blends.',
+    desc:'Perfect for single-serve smoothies and quick blends, this BPA-free 24oz cup is lightweight, durable and fully compatible with NutriBullet 600W and 900W models.',
+    points:['Ideal single-serve size','BPA-free and durable','Easy to clean','Fits NutriBullet 600W / 900W','Great for quick blends'],
     specs:[['Compatible With','NutriBullet 600W / Pro 900'],['What’s Included','24oz cup'],['Capacity','24 oz (710 ml)'],['Material','BPA-free, food-grade'],['Type','Compatible replacement (non-OEM)']]
   },
   {
     id:'nb-cup-18', brand:'NutriBullet', category:'Cups & Lids',
-    name:'Replacement 18oz Cup Compatible with NutriBullet 600 / Pro 900',
-    fits:'Compatible with NutriBullet 600W / Pro 900',
-    kw:'nutribullet replacement cup',
+    name:'18oz Short Cup — Compatible with NutriBullet 600W / 900W',
+    seoTitle:'18oz Short Cup Replacement | Compatible with NutriBullet 600W / 900W',
+    fits:'Fits NutriBullet 600W / 900W',
+    kw:'NutriBullet 18oz cup, NutriBullet short cup, blender cup replacement',
+    meta:'Compact BPA-free 18oz cup ideal for small blends, sauces and quick prep. Compatible with NutriBullet 600W and Pro 900.',
     art:'cup', badge:'', price:9.99, compareAt:0,
-    desc:'Keep your NutriBullet 600 / Pro 900 blending like new. This compatible 18oz short cup is precision-designed to fit your NutriBullet blade assembly — ideal for single servings.',
-    points:['Exact-fit compatible with NutriBullet 600W / Pro 900','Made from quality, food-grade BPA-free plastic','Easy to install — no special tools needed','Quality checked before dispatch'],
-    specs:[['Compatible With','NutriBullet 600W / Pro 900'],['What’s Included','18oz short cup'],['Capacity','18 oz (530 ml)'],['Material','BPA-free, food-grade'],['Type','Compatible replacement (non-OEM)']]
+    blurb:'Compact BPA-free cup ideal for small blends, sauces and quick prep.',
+    desc:'A compact BPA-free 18oz cup designed for sauces, dips, small smoothies and everyday convenience. Fully compatible with NutriBullet 600W and 900W.',
+    points:['Compact size for small blends','BPA-free Tritan','Fits NutriBullet 600W / 900W','Dishwasher-safe','Perfect for everyday use'],
+    specs:[['Compatible With','NutriBullet 600W / Pro 900'],['What’s Included','18oz short cup'],['Capacity','18 oz (530 ml)'],['Material','BPA-free Tritan'],['Type','Compatible replacement (non-OEM)']]
   },
   {
     id:'nb-blade-cup-set', brand:'NutriBullet', category:'Bundles',
-    name:'Replacement Blade + Cup Set Compatible with NutriBullet 600 / Pro 900',
-    fits:'Compatible with NutriBullet 600W / Pro 900',
-    kw:'nutribullet replacement cup and blade',
+    name:'Blade + 32oz Cup Bundle — Compatible with NutriBullet 600W / 900W',
+    seoTitle:'NutriBullet Blade + 32oz Cup Bundle | Compatible with 600W / 900W',
+    fits:'Fits NutriBullet 600W / 900W',
+    kw:'NutriBullet bundle, NutriBullet blade set, NutriBullet cup and blade',
+    meta:'Best-value NutriBullet bundle including extractor blade and BPA-free 32oz tall cup. Fits NutriBullet 600W and Pro 900.',
     art:'set', badge:'Save 20%', price:27.99, compareAt:32.99,
-    desc:'Keep your NutriBullet 600 / Pro 900 blending like new. This compatible blade and 32oz cup set is precision-designed to fit your model — a cost-effective way to replace a worn blade and add a spare cup.',
-    points:['Exact-fit compatible with NutriBullet 600W / Pro 900','Made from quality, food-safe materials','Easy to install — no special tools needed','Quality checked before dispatch'],
+    blurb:'Best-value bundle including extractor blade and BPA-free tall cup.',
+    desc:'The best-value upgrade for your NutriBullet. This bundle includes a stainless-steel extractor blade and a BPA-free 32oz tall cup — everything you need to restore full blending performance.',
+    points:['Best-value upgrade set','Stainless-steel extractor blade','BPA-free tall cup','Fits NutriBullet 600W / 900W','Great for replacing worn parts'],
     specs:[['Compatible With','NutriBullet 600W / Pro 900'],['What’s Included','Blade + 32oz cup + gasket'],['Material','Food-safe, BPA-free'],['Type','Compatible replacement (non-OEM)']]
   },
   {
     id:'nb-lid', brand:'NutriBullet', category:'Cups & Lids',
-    name:'Replacement To-Go Lid Compatible with NutriBullet Cups',
-    fits:'Compatible with NutriBullet 18 / 24 / 32oz cups',
-    kw:'nutribullet to go cup',
+    name:'To-Go Lid — Compatible with NutriBullet Cups',
+    seoTitle:'NutriBullet To-Go Lid Replacement | Fits 18oz / 24oz / 32oz Cups',
+    fits:'Fits NutriBullet 18oz, 24oz and 32oz cups.',
+    kw:'NutriBullet lid, NutriBullet to-go lid, blender lid replacement',
+    meta:'Leak-proof resealable to-go lid compatible with NutriBullet cups. Perfect for smoothies on the go.',
     art:'lid', badge:'', price:8.99, compareAt:0,
-    desc:'Keep your NutriBullet blending on the go. This compatible resealable lid with a flip-top spout is precision-designed to fit NutriBullet 18, 24, and 32oz cups.',
-    points:['Exact-fit compatible with NutriBullet 18 / 24 / 32oz cups','Made from quality, food-grade BPA-free plastic','Easy to use — flip-top to-go spout','Quality checked before dispatch'],
+    blurb:'Leak-proof resealable lid for smoothies on the go.',
+    desc:'A leak-proof, resealable to-go lid designed for NutriBullet cups. Perfect for commuting, travel and smoothies on the go.',
+    points:['Leak-proof design','Fits 18oz / 24oz / 32oz cups','Perfect for travel','BPA-free','Easy snap-seal closure'],
     specs:[['Compatible With','NutriBullet 18 / 24 / 32oz cups'],['What’s Included','Flip-top to-go lid'],['Material','BPA-free, food-grade'],['Type','Compatible replacement (non-OEM)']]
   },
   {
     id:'nb-gasket', brand:'NutriBullet', category:'Replacement Parts',
-    name:'Replacement Silicone Gasket Compatible with NutriBullet Blades',
-    fits:'Compatible with NutriBullet blade assemblies',
-    kw:'nutribullet gasket',
+    name:'Silicone Gasket Seal — Compatible with NutriBullet Blades',
+    seoTitle:'NutriBullet Silicone Gasket Seal | Compatible with All Blade Assemblies',
+    fits:'Compatible with all NutriBullet blade assemblies.',
+    kw:'NutriBullet gasket, blender seal ring, NutriBullet rubber ring',
+    meta:'Leak-proof silicone gasket replacement for NutriBullet blade assemblies. Restores proper sealing and prevents spills.',
     art:'gasket', badge:'', price:5.99, compareAt:0,
-    desc:'Keep your NutriBullet sealed tight. This compatible food-grade silicone gasket is precision-designed to fit NutriBullet blade assemblies — the small part that helps prevent leaks.',
-    points:['Exact-fit compatible with NutriBullet blade assemblies','Made from quality, food-grade silicone','Easy to install — no special tools needed','Quality checked before dispatch'],
+    blurb:'Leak-proof silicone gasket designed for all NutriBullet blade assemblies.',
+    desc:'Restore your NutriBullet’s leak-proof performance with a high-quality silicone gasket compatible with all blade assemblies.',
+    points:['Restores leak-proof sealing','Compatible with all NutriBullet blades','High-quality silicone','Easy to install','Prevents spills and leaks'],
     specs:[['Compatible With','NutriBullet blade assemblies'],['What’s Included','2 pieces'],['Material','Food-grade silicone'],['Type','Compatible replacement (non-OEM)']]
   },
   {
     id:'vm-wet-blade', brand:'Vitamix', category:'Blades',
-    name:'Replacement Blade Assembly Compatible with Vitamix 5200',
-    fits:'Compatible with Vitamix 5200 / 5000 / 6300 (C-Series)',
-    kw:'vitamix 5200 replacement blade',
+    name:'Wet Blade Assembly — Compatible with Vitamix 5200 / 5000 / 6300',
+    seoTitle:'Vitamix Wet Blade Assembly Replacement | Fits 5200 / 5000 / 6300',
+    fits:'Compatible with Vitamix 5200, 5000 and 6300.',
+    kw:'Vitamix wet blade, Vitamix blade replacement, Vitamix 5200 blade',
+    meta:'Stainless-steel wet blade assembly engineered for smooth blending. Compatible with Vitamix 5200, 5000 and 6300.',
     art:'blade', badge:'High Demand', price:34.99, compareAt:44.99,
-    desc:'Keep your Vitamix 5200 blending like new. This compatible wet blade assembly is precision-designed to fit classic Vitamix C-series models (5200, 5000, 6300) — a cost-effective replacement for a worn blade.',
-    points:['Exact-fit compatible with Vitamix 5200 / 5000 / 6300 (C-Series)','Made from quality, food-safe stainless steel','Easy to install — no special tools needed','Quality checked before dispatch'],
+    blurb:'Stainless-steel wet blade engineered for smooth, consistent blending.',
+    desc:'A premium stainless-steel wet blade assembly engineered for smooth, consistent blending. Perfect for soups, smoothies, sauces and daily use.',
+    points:['Stainless-steel wet blade','Compatible with Vitamix 5200 / 5000 / 6300','Smooth blending performance','Durable and long-lasting','Ideal for soups, smoothies and sauces'],
     specs:[['Compatible With','Vitamix 5200 / 5000 / 6300 (C-Series)'],['Ref Part','1151 / 1152 / STM102R'],['What’s Included','Wet blade assembly'],['Blade','Stainless steel wet blade'],['Type','Compatible replacement (non-OEM)']]
   },
   {
     id:'vm-64oz-container', brand:'Vitamix', category:'Containers',
-    name:'Replacement 64oz Container Compatible with Vitamix 5200',
-    fits:'Compatible with Vitamix C-Series (5200 / 5000 / 6300)',
-    kw:'vitamix 64 oz container',
+    name:'64oz Tall Container + Lid — Compatible with Vitamix C-Series',
+    seoTitle:'64oz Tall Container Replacement | Compatible with Vitamix C-Series',
+    fits:'Fits Vitamix C-Series.',
+    kw:'Vitamix 64oz container, Vitamix replacement jar, Vitamix C-Series container',
+    meta:'BPA-free Tritan 64oz tall container with secure lid. Compatible with Vitamix C-Series blenders.',
     art:'container', badge:'', price:29.99, compareAt:0,
-    desc:'Keep your Vitamix 5200 blending like new. This compatible 64oz (2L) tall container with lid is precision-designed to fit classic Vitamix C-series machines — a cost-effective replacement for a cracked jar.',
-    points:['Exact-fit compatible with Vitamix C-Series 5200 / 5000 / 6300 (tall)','Made from quality, food-grade, impact-resistant materials','Easy to install — no special tools needed','Quality checked before dispatch'],
-    specs:[['Compatible With','Vitamix C-Series (tall) 5200 / 5000 / 6300'],['What’s Included','64oz tall container + lid'],['Capacity','64 oz (2 L)'],['Material','Food-grade, impact-resistant'],['Type','Compatible replacement (non-OEM)']]
+    blurb:'BPA-free Tritan container with secure lid and stainless-steel blades.',
+    desc:'A BPA-free Tritan 64oz tall container designed for large batches and daily blending. Includes a secure lid and stainless-steel blades.',
+    points:['BPA-free Tritan construction','Stainless-steel blades','Fits Vitamix C-Series','Large 64oz capacity','Perfect for family-size blending'],
+    specs:[['Compatible With','Vitamix C-Series (tall) 5200 / 5000 / 6300'],['What’s Included','64oz tall container + lid'],['Capacity','64 oz (2 L)'],['Material','BPA-free Tritan'],['Type','Compatible replacement (non-OEM)']]
   },
   {
     id:'vm-tamper', brand:'Vitamix', category:'Replacement Parts',
-    name:'Replacement Tamper Compatible with Vitamix Containers',
-    fits:'Compatible with Vitamix standard (tall) containers',
-    kw:'vitamix tamper',
+    name:'Tamper — Compatible with Vitamix Standard Containers',
+    seoTitle:'Vitamix Tamper Replacement | Fits Standard 64oz Containers',
+    fits:'Compatible with standard 64oz containers.',
+    kw:'Vitamix tamper, blender tamper replacement, Vitamix accessories',
+    meta:'Durable Vitamix-compatible tamper designed for safe, efficient blending. Helps push ingredients toward the blade.',
     art:'tamper', badge:'', price:12.99, compareAt:0,
-    desc:'Keep your Vitamix blending smoothly. This compatible tamper is precision-designed for standard Vitamix containers — use it to press ingredients toward the blades.',
-    points:['Exact-fit compatible with Vitamix standard (tall) containers','Made from quality, BPA-free plastic','Easy to use — no special tools needed','Quality checked before dispatch'],
+    blurb:'Durable tamper designed for safe, efficient blending.',
+    desc:'A durable tamper designed for safe, efficient blending. Helps push ingredients toward the blade for smoother results.',
+    points:['Helps push ingredients toward blade','Compatible with standard 64oz containers','Durable construction','Safe and easy to use','Improves blending efficiency'],
     specs:[['Compatible With','Vitamix standard (tall) containers'],['What’s Included','1 tamper'],['Material','BPA-free plastic'],['Type','Compatible replacement (non-OEM)']]
   },
   {
     id:'ninja-blade', brand:'Ninja', category:'Blades',
-    name:'Replacement Blade Compatible with Ninja Professional',
-    fits:'Compatible with Ninja Professional BL610 / BL642',
-    kw:'ninja blender replacement blade',
+    name:'Extractor Blade — Compatible with Ninja BL610 / BL642',
+    seoTitle:'Ninja Extractor Blade Replacement | Fits BL610 / BL642',
+    fits:'Fits Ninja BL610, BL642 and similar models.',
+    kw:'Ninja blade replacement, Ninja BL610 blade, Ninja extractor blade',
+    meta:'Reinforced stainless-steel extractor blade compatible with Ninja BL610 and BL642. Ideal for ice crushing and smoothie blending.',
     art:'ninja', badge:'', price:24.99, compareAt:0,
-    desc:'Keep your Ninja Professional blending like new. This compatible replacement blade is precision-designed to fit Ninja Professional BL610 and BL642 blenders — a cost-effective replacement for a worn or damaged blade.',
-    points:['Exact-fit compatible with Ninja Professional BL610 / BL642','Made from quality, food-safe stainless steel','Easy to install — no special tools needed','Quality checked before dispatch'],
+    blurb:'Reinforced stainless-steel blade for powerful ice crushing and smoothie blending.',
+    desc:'A reinforced stainless-steel extractor blade designed for powerful ice crushing and smoothie blending. Compatible with Ninja BL610 and BL642.',
+    points:['Reinforced stainless-steel fins','Fits Ninja BL610 / BL642','Powerful ice-crushing performance','Includes rubber gasket','Ideal for smoothies and frozen drinks'],
     specs:[['Compatible With','Ninja Professional BL610 / BL642'],['What’s Included','Blade assembly'],['Blade','Stainless steel'],['Type','Compatible replacement (non-OEM)']]
   },
   {
     id:'ninja-jar', brand:'Ninja', category:'Containers',
-    name:'Replacement 72oz Jar Compatible with Ninja Professional',
-    fits:'Compatible with Ninja Professional BL610 / BL642 / BL770',
-    kw:'ninja blender replacement jar',
+    name:'72oz Jar + Lid — Compatible with Ninja BL610 / BL642 / BL770',
+    seoTitle:'72oz Jar Replacement + Lid | Compatible with Ninja BL610 / BL642 / BL770',
+    fits:'Fits Ninja BL610 / BL642 / BL770.',
+    kw:'Ninja 72oz jar, Ninja replacement pitcher, Ninja blender container',
+    meta:'Large BPA-free 72oz jar with secure lid. Compatible with Ninja BL610, BL642 and BL770 series blenders.',
     art:'jar', badge:'', price:26.99, compareAt:0,
-    desc:'Keep your Ninja Professional blending like new. This compatible 72oz jar with lid is precision-designed to fit Ninja Professional BL610, BL642, and BL770 — a cost-effective replacement for a cracked jar.',
-    points:['Exact-fit compatible with Ninja Professional BL610 / BL642 / BL770','Made from quality, food-grade materials','Easy to install — no special tools needed','Quality checked before dispatch'],
-    specs:[['Compatible With','Ninja Professional BL610 / BL642 / BL770'],['What’s Included','72oz jar + lid'],['Capacity','72 oz'],['Type','Compatible replacement (non-OEM)']]
+    blurb:'Large BPA-free jar with secure lid for family-size blending.',
+    desc:'A large BPA-free 72oz jar designed for family-size blending. Includes a secure locking lid and fits Ninja BL610, BL642 and BL770.',
+    points:['Large 72oz capacity','BPA-free Tritan','Fits Ninja BL610 / BL642 / BL770','Secure locking lid','Perfect for big batches'],
+    specs:[['Compatible With','Ninja Professional BL610 / BL642 / BL770'],['What’s Included','72oz jar + lid'],['Capacity','72 oz'],['Material','BPA-free Tritan'],['Type','Compatible replacement (non-OEM)']]
   }
 ];
 
@@ -204,19 +240,19 @@ const CATEGORIES = ['All', 'Blades', 'Cups & Lids', 'Containers', 'Replacement P
 
 const BRAND_INTROS = {
   All: {
-    title:'Shop Replacement Parts',
-    text:'Exact-fit compatible replacements for Vitamix, NutriBullet, and Ninja blenders. Precisely engineered to fit your model, made from quality food-safe materials, and priced at a fraction of the original.'
+    title:'Browse All Compatible Parts',
+    text:'High-quality compatible replacement parts for the blenders you already own. Exact-fit blades, cups and containers for Vitamix, NutriBullet and Ninja.'
   },
   NutriBullet: {
-    title:'NutriBullet Replacement Parts',
-    text:'Keep your NutriBullet blending like new. We stock compatible replacement blades, cups, lids, and gaskets for the NutriBullet 600W and Pro 900 series. Exact-fit parts designed to match your model — without the OEM price.'
+    title:'NutriBullet Compatible Parts',
+    text:'Exact-fit blades, cups, lids and gaskets for NutriBullet 600W and Pro 900.'
   },
   Vitamix: {
-    title:'Vitamix Replacement Parts',
-    text:'Upgrade or repair your Vitamix. Our compatible replacement blade assemblies and containers are designed to fit the classic C-series models (5200, 5000, 6300) and more. Durable, food-safe, and precision-checked.'
+    title:'Vitamix Compatible Parts',
+    text:'Premium blade assemblies, containers and tampers for Vitamix C-Series blenders.'
   },
   Ninja: {
-    title:'Ninja Replacement Parts',
-    text:'Compatible replacement jars, blades, and cups for Ninja Professional blenders. Find the exact part to fit your model and get blending again.'
+    title:'Ninja Compatible Parts',
+    text:'Durable blades, jars and cups engineered for Ninja BL6xx series.'
   }
 };
