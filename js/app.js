@@ -18,10 +18,12 @@ const NAV = [
   ['Home','index.html'],['Shop','shop.html'],['About','about.html'],
   ['Shipping & Returns','shipping.html'],['FAQ','faq.html'],['Contact','contact.html']
 ];
+function announceHTML(){
+  return `<div class="announce">🚚 Free shipping over $50 &nbsp;·&nbsp; 🔄 30-day hassle-free returns &nbsp;·&nbsp; 💬 Real human support on WhatsApp</div>`;
+}
 function headerHTML(){
   const links = NAV.map(([t,h])=>`<a href="${h}">${t}</a>`).join('');
-  return `<div class="announce">🚚 Free shipping over $50 &nbsp;·&nbsp; 🔄 30-day hassle-free returns &nbsp;·&nbsp; 💬 Real human support on WhatsApp</div>
-    <div class="container header-inner">
+  return `<div class="container header-inner">
     <a class="logo" href="index.html"><span class="dot"></span>BlendCraft<small style="margin-top:3px">compatible blender parts</small></a>
     <nav class="nav" id="nav">${links}
       <a href="https://github.com/tcx0001" style="display:none"></a>
@@ -43,11 +45,11 @@ function footerHTML(){
     <div class="footer-grid">
       <div>
         <div class="footer-logo">BlendCraft</div>
-        <p style="font-size:14px;color:#94a3b8">Premium compatible replacement parts for Vitamix, NutriBullet and Ninja. Quality you can trust, at a fraction of the OEM price.</p>
+        <p style="font-size:14px">Premium compatible replacement parts for Vitamix, NutriBullet and Ninja. Quality you can trust, at a fraction of the OEM price.</p>
       </div>
       <div><h4>Shop</h4><a href="shop.html">Browse All Compatible Parts</a><a href="shop.html?brand=NutriBullet">NutriBullet</a><a href="shop.html?brand=Vitamix">Vitamix</a><a href="shop.html?brand=Ninja">Ninja</a></div>
       <div><h4>Help</h4><a href="shipping.html">Shipping & Returns</a><a href="faq.html">FAQ</a><a href="privacy.html">Privacy</a><a href="contact.html">Contact Us</a><a href="about.html">About</a></div>
-      <div><h4>Contact</h4><a href="mailto:275364182@qq.com">275364182@qq.com</a><a href="https://wa.me/8613980077660" target="_blank" rel="noopener">WhatsApp: +86 139 8007 7660</a><a href="contact.html">Real human support — we reply within 24–48 hours</a></div>
+      <div><h4>Contact</h4><a href="mailto:275364182@qq.com">275364182@qq.com</a><a class="footer-phone" href="https://wa.me/8613980077660" target="_blank" rel="noopener">WhatsApp: +86 139 8007 7660</a><a href="contact.html">Real human support — we reply within 24–48 hours</a></div>
     </div>
     <div class="footer-bottom">
       <div>© ${new Date().getFullYear()} BlendCraft. All rights reserved.</div>
@@ -63,7 +65,12 @@ function injectShell(){
     l.href='data:image/svg+xml,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="7" fill="#f97316"/><path d="M16 7 11 15h10z" fill="#fff"/><path d="M9 15h14l-2 12H11z" fill="#fff" opacity=".92"/></svg>');
     document.head.appendChild(l);
   }
-  const h = el('#site-header'); if(h) h.innerHTML = headerHTML();
+  const h = el('#site-header');
+  if(h){
+    if(!el('.announce')) h.insertAdjacentHTML('beforebegin', announceHTML());
+    h.classList.add('site-header');
+    h.innerHTML = headerHTML();
+  }
   const f = el('#site-footer'); if(f) f.innerHTML = footerHTML();
   renderCartCount();
   const mt = el('#menu-toggle'), nav = el('#nav');
