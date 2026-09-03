@@ -79,13 +79,13 @@ h1,h2,h3,h4{font-family:var(--font-head);line-height:1.2;font-weight:700;color:v
 .cat-card .go{color:var(--brand);font-weight:600;margin-top:14px;display:inline-block}
 
 /* value props */
-.values{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.values{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
 .values-3{grid-template-columns:repeat(3,1fr)}
-.value{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:24px}
-.value .ico{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;background:var(--bg-soft);margin-bottom:14px}
-.value .ico svg{width:24px;height:24px;color:var(--brand)}
-.value h4{font-size:16px;margin-bottom:6px}
-.value p{color:var(--muted);font-size:14px}
+.value{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px;display:flex;align-items:flex-start;gap:14px}
+.value .ico{width:40px;height:40px;border-radius:10px;display:grid;place-items:center;background:var(--bg-soft);flex-shrink:0}
+.value .ico svg{width:20px;height:20px;color:var(--brand)}
+.value h4{font-size:15px;margin-bottom:4px}
+.value p{color:var(--muted);font-size:13px;line-height:1.45}
 
 /* ---------- Product grid ---------- */
 .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
@@ -216,6 +216,10 @@ h1,h2,h3,h4{font-family:var(--font-head);line-height:1.2;font-weight:700;color:v
 }
 @media(max-width:640px){
   .grid,.cat-grid,.values,.values-3,.trust{grid-template-columns:1fr}
+  .values,.values-3{gap:10px}
+  .value{padding:12px 14px;gap:12px}
+  .value .ico{width:36px;height:36px}
+  .sec-head{margin-bottom:24px}
   .nav{position:fixed;inset:72px 0 auto 0;z-index:49;flex-direction:column;background:#fff;padding:24px;gap:18px;border-bottom:1px solid var(--line);transform:translateY(-120%);transition:.2s}
   .nav.open{transform:translateY(0)}
   .menu-toggle{display:block}

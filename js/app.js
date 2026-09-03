@@ -74,7 +74,32 @@ function injectShell(){
   const f = el('#site-footer'); if(f) f.innerHTML = footerHTML();
   renderCartCount();
   const mt = el('#menu-toggle'), nav = el('#nav');
-  if(mt && nav){ mt.addEventListener('click', ()=> nav.classList.toggle('open')); }
+  if(mt && nav){
+    const closeNav = ()=> nav.classList.remove('open');
+    mt.addEventListener('click', e=>{
+      e.stopPropagation();
+      nav.classList.toggle('open');
+    });
+    nav.addEventListener('click', e=>{
+      if(e.target.closest('a')) closeNav();
+    });
+    document.addEventListener('click', e=>{
+      if(!nav.classList.contains('open')) return;
+      if(e.target.closest('#nav') || e.target.closest('#menu-toggle')) return;
+      closeNav();
+    });
+    let startY = 0;
+    document.addEventListener('touchstart', e=>{
+      startY = e.touches[0].clientY;
+    }, {passive:true});
+    document.addEventListener('touchmove', e=>{
+      if(!nav.classList.contains('open')) return;
+      if(Math.abs(e.touches[0].clientY - startY) > 20) closeNav();
+    }, {passive:true});
+    window.addEventListener('scroll', ()=>{
+      if(nav.classList.contains('open')) closeNav();
+    }, {passive:true});
+  }
 }
 
 /* ---------- cart ---------- */
