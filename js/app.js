@@ -59,6 +59,76 @@ function footerHTML(){
 }
 const STORE_EMAIL = '275364182@qq.com';
 const STORE_WHATSAPP = '8613980077660';
+
+const PRODUCT_FILES = {
+  'nutribullet-replacement-blade.html':'nb-cross-blade',
+  'nutribullet-replacement-cup.html':'nb-cup-32',
+  'nutribullet-24oz-cup.html':'nb-cup-24',
+  'nutribullet-18oz-cup.html':'nb-cup-18',
+  'nutribullet-blade-cup-bundle.html':'nb-blade-cup-set',
+  'nutribullet-replacement-lid.html':'nb-lid',
+  'nutribullet-gasket-seal.html':'nb-gasket',
+  'vitamix-5200-replacement-blade.html':'vm-wet-blade',
+  'vitamix-64oz-container.html':'vm-64oz-container',
+  'vitamix-tamper.html':'vm-tamper',
+  'ninja-replacement-blade.html':'ninja-blade',
+  'ninja-72oz-container.html':'ninja-jar'
+};
+function shortName(name){
+  return String(name).replace(/\s+[—–-]\s+Compatible with.*$/i, '').trim() || name;
+}
+function crumbsHTML(items){
+  const sep = '<span class="crumbs-sep" aria-hidden="true">›</span>';
+  return `<nav class="crumbs" aria-label="Breadcrumb">${items.map((it,i)=>{
+    const last = i===items.length-1 || !it[1];
+    return last ? `<span class="crumbs-current">${it[0]}</span>` : `<a href="${it[1]}">${it[0]}</a>`;
+  }).join(sep)}</nav>`;
+}
+function pageCrumbs(){
+  const file = (location.pathname.split('/').pop() || 'index.html').toLowerCase() || 'index.html';
+  if(file==='index.html') return null;
+  if(file==='shop.html'){
+    const brand = new URLSearchParams(location.search).get('brand') || '';
+    const items = [['Home','index.html'],['Shop', brand ? 'shop.html' : '']];
+    if(brand) items.push([brand,'']);
+    return items;
+  }
+  if(file==='product.html'){
+    const p = byId(new URLSearchParams(location.search).get('id'));
+    if(!p) return [['Home','index.html'],['Shop','shop.html']];
+    return [['Home','index.html'],['Shop','shop.html'],[p.brand,'shop.html?brand='+encodeURIComponent(p.brand)],[shortName(p.name),'']];
+  }
+  const simple = {
+    'about.html':'About','shipping.html':'Shipping & Returns','faq.html':'FAQ',
+    'contact.html':'Contact','privacy.html':'Privacy','cart.html':'Cart','checkout.html':'Checkout'
+  };
+  if(simple[file]) return [['Home','index.html'],[simple[file],'']];
+  const p = byId(PRODUCT_FILES[file]);
+  if(p) return [['Home','index.html'],['Shop','shop.html'],[p.brand,'shop.html?brand='+encodeURIComponent(p.brand)],[shortName(p.name),'']];
+  return null;
+}
+function crumbsBarHTML(items){
+  return `<div class="crumbs-bar"><div class="container">${crumbsHTML(items)}</div></div>`;
+}
+function placeCrumbs(items){
+  const html = crumbsBarHTML(items);
+  const existing = el('.crumbs-bar');
+  if(existing){ existing.outerHTML = html; return; }
+  const hero = el('.page-hero');
+  if(hero){ hero.insertAdjacentHTML('afterend', html); return; }
+  const section = el('section.section');
+  if(section) section.insertAdjacentHTML('beforebegin', html);
+}
+function injectCrumbs(){
+  const items = pageCrumbs();
+  if(!items) return;
+  placeCrumbs(items);
+}
+function updateShopCrumbs(brand){
+  const items = [['Home','index.html'],['Shop', brand ? 'shop.html' : '']];
+  if(brand) items.push([brand,'']);
+  placeCrumbs(items);
+}
 function injectShell(){
   if(!el('link[rel="icon"]')){
     const l = document.createElement('link'); l.rel='icon'; l.type='image/svg+xml';
@@ -332,6 +402,7 @@ function toast(msg){
 /* ---------- boot ---------- */
 document.addEventListener('DOMContentLoaded', ()=>{
   injectShell();
+  injectCrumbs();
   if(el('#grid') && !el('#brand-filters')) renderGrid(el('#grid').dataset.filter || 'All', '');
   if(el('#featured-grid')) renderGrid('All','-featured'); // placeholder, overridden below
   if(el('#product-detail')) renderProductDetail();
@@ -350,3 +421,4 @@ window.removeItem = removeItem;
 window.qtyStep = qtyStep;
 window.placeOrder = placeOrder;
 window.toast = toast;
+window.updateShopCrumbs = updateShopCrumbs;

@@ -58,6 +58,7 @@
       window.renderGrid(cat, '', brand);
       const url = brand ? 'shop.html?brand='+encodeURIComponent(brand) : 'shop.html';
       history.replaceState(null, '', url);
+      if(window.updateShopCrumbs) window.updateShopCrumbs(brand);
     });
   }
 
