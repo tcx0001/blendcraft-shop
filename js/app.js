@@ -20,7 +20,7 @@ const NAV = [
 ];
 function headerHTML(){
   const links = NAV.map(([t,h])=>`<a href="${h}">${t}</a>`).join('');
-  return `<div class="announce">🚚 Free shipping on orders over $50 &nbsp;·&nbsp; 🔄 30-day returns &nbsp;·&nbsp; 💬 Chat on WhatsApp</div>
+  return `<div class="announce">🚚 Tracked worldwide shipping &nbsp;·&nbsp; 🔄 30-day returns &nbsp;·&nbsp; 🔒 Secure checkout</div>
     <div class="container header-inner">
     <a class="logo" href="index.html"><span class="dot"></span>BlendCraft<small style="margin-top:3px">compatible blender parts</small></a>
     <nav class="nav" id="nav">${links}
@@ -43,15 +43,15 @@ function footerHTML(){
     <div class="footer-grid">
       <div>
         <div class="footer-logo">BlendCraft</div>
-        <p style="font-size:14px;color:#94a3b8">Premium compatible replacement parts for Vitamix, NutriBullet and Ninja blenders. Quality you can trust, at a fraction of the OEM price.</p>
+        <p style="font-size:14px;color:#94a3b8">Compatible replacement blades, cups, and parts for Vitamix, NutriBullet, and Ninja blenders — at a fraction of the original.</p>
       </div>
-      <div><h4>Shop</h4><a href="shop.html">All Parts</a><a href="shop.html">Blades</a><a href="shop.html">Cups & Lids</a><a href="shop.html">Containers</a></div>
-      <div><h4>Help</h4><a href="shipping.html">Shipping</a><a href="shipping.html">Returns</a><a href="contact.html">Contact Us</a><a href="about.html">About</a></div>
-      <div><h4>Contact</h4><a href="mailto:275364182@qq.com">275364182@qq.com</a><a href="https://wa.me/8613980077660" target="_blank" rel="noopener">WhatsApp: +86 139 8007 7660</a><a href="contact.html">We reply within 24-48h</a></div>
+      <div><h4>Shop</h4><a href="shop.html">All Parts</a><a href="shop.html?brand=NutriBullet">NutriBullet</a><a href="shop.html?brand=Vitamix">Vitamix</a><a href="shop.html?brand=Ninja">Ninja</a></div>
+      <div><h4>Help</h4><a href="shipping.html">Shipping & Returns</a><a href="privacy.html">Privacy</a><a href="contact.html">Contact Us</a><a href="about.html">About</a></div>
+      <div><h4>Contact</h4><a href="mailto:275364182@qq.com">275364182@qq.com</a><a href="https://wa.me/8613980077660" target="_blank" rel="noopener">WhatsApp: +86 139 8007 7660</a><a href="contact.html">We aim to reply within 24–48 hours</a></div>
     </div>
     <div class="footer-bottom">
       <div>© ${new Date().getFullYear()} BlendCraft. All rights reserved.</div>
-      <div class="disclaimer">All brand names, trademarks and logos are the property of their respective owners. Products sold on this site are <b>compatible replacement parts</b> and are <b>not</b> original equipment manufacturer (OEM) products. We are not affiliated with, or endorsed by, any of the brands mentioned.</div>
+      <div class="disclaimer">All brand names are trademarks of their respective owners. Products sold are <b>compatible replacement parts</b> and are <b>not</b> original equipment manufacturer (OEM) products. We are not affiliated with or endorsed by the respective brand owners.</div>
     </div>
   </div>`;
 }
@@ -130,7 +130,6 @@ function productCard(p){
       <span class="cat">${p.brand} · ${p.category}</span>
       <h3><a href="product.html?id=${p.id}">${p.name}</a></h3>
       <div class="fits">${p.fits}</div>
-      <div class="stars">★ ${p.rating}</div>
       <div class="product-foot">
         <span class="price">${money(p.price)}${p.compareAt?`<s>${money(p.compareAt)}</s>`:''}</span>
         <button class="add-btn" onclick="addToCart('${p.id}')">+ Add</button>
@@ -138,9 +137,10 @@ function productCard(p){
     </div>
   </article>`;
 }
-function renderGrid(filter, hold){
+function renderGrid(filter, hold, brand){
   const wrap = el('#grid' + (hold||'')); if(!wrap) return;
   let list = PRODUCTS;
+  if(brand) list = list.filter(p=>p.brand===brand);
   if(filter && filter!=='All') list = list.filter(p=>p.category===filter || p.brand===filter);
   wrap.innerHTML = list.map(productCard).join('') || `<div class="empty" style="grid-column:1/-1"><p>No products found.</p></div>`;
 }
@@ -156,28 +156,44 @@ function renderProductDetail(){
   const related = PRODUCTS.filter(x=>x.brand===p.brand && x.id!==p.id).slice(0,4);
   const relHTML = related.length ? `<div class="section related"><div class="sec-head"><h2>You may also like</h2></div><div class="grid" id="related-grid"></div></div>` : '';
   // JSON-LD for SEO
-  const ld = { '@context':'https://schema.org','@type':'Product', name:p.name, image:PRODUCT_IMG[p.id]?location.origin+location.pathname.replace(/[^/]*$/,'')+PRODUCT_IMG[p.id]:'', description:p.desc, brand:{'@type':'Brand',name:p.brand}, sku:p.id, offers:{'@type':'Offer', priceCurrency:'USD', price:p.price, availability:'https://schema.org/InStock'}};
+  const ld = { '@context':'https://schema.org','@type':'Product', name:p.name, image:PRODUCT_IMG[p.id]?location.origin+location.pathname.replace(/[^/]*$/,'')+PRODUCT_IMG[p.id]:'', description:p.desc, brand:{'@type':'Brand',name:'BlendCraft'}, sku:p.id, offers:{'@type':'Offer', priceCurrency:'USD', price:p.price, availability:'https://schema.org/InStock'}};
   const oldLd = el('#product-ld'); if(oldLd) oldLd.remove();
   const s = document.createElement('script'); s.id='product-ld'; s.type='application/ld+json'; s.textContent=JSON.stringify(ld); document.head.appendChild(s);
+  const points = (p.points||[]).map(x=>`<li>${x}</li>`).join('');
+  const meta = document.querySelector('meta[name="description"]');
+  if(meta) meta.setAttribute('content', p.desc);
   wrap.innerHTML = `<div class="pd">
     <div class="pd-media">${mediaFor(p)}</div>
     <div class="pd-info">
       <span class="cat" style="color:var(--brand);font-weight:700;text-transform:uppercase;font-size:13px">${p.brand} · ${p.category}</span>
       <h1>${p.name}</h1>
       <div class="sub">${p.fits}</div>
-      <div class="stars" style="margin:10px 0">★ ${p.rating} · <span style="color:var(--muted);font-weight:400">customer reviews</span></div>
       <div class="pd-price">${money(p.price)}${p.compareAt?`<s>${money(p.compareAt)}</s>`:''}</div>
       <div class="pd-desc">${p.desc}</div>
+      ${points?`<ul class="pd-points">${points}</ul>`:''}
+      <p class="pd-disclaimer">This is a compatible replacement part, not an OEM ${p.brand} product.</p>
       <div class="specs">${specs}</div>
-      <div style="font-size:14px;color:var(--muted);margin-bottom:16px">🚚 Ships in 1-3 days · 🔄 30-day returns</div>
+      <div style="font-size:14px;color:var(--muted);margin-bottom:16px">🚚 Tracked shipping · processed in 1–3 business days · 🔄 30-day returns</div>
       <div class="pd-actions">
         <div class="quantity"><button onclick="qtyStep(-1)">−</button><input id="qty" value="1"><button onclick="qtyStep(1)">+</button></div>
         <button class="buy-btn" onclick="addToCart('${p.id}', parseInt(el('#qty').value)||1); location.href='checkout.html'">Buy Now</button>
         <button class="add-btn" style="padding:14px 22px;font-size:15px" onclick="addToCart('${p.id}', parseInt(el('#qty').value)||1)">Add to Cart</button>
       </div>
-      <div class="notice">✔ ${p.name} is a <b>compatible replacement part</b>, not an OEM product. Please confirm your exact blender model before ordering.</div>
+      <div class="notice"><b>Important — fit first:</b> Please double-check that this part matches your exact blender model before ordering. If you are unsure, <a href="contact.html">contact us</a> — we are happy to help you confirm.</div>
     </div>
-  </div>${relHTML}`;
+  </div>
+  <div class="content faq-block">
+    <h2>How to confirm this part fits</h2>
+    <p>Check your blender’s <b>brand and model number</b> (usually on the base or a label). This part is <b>${p.fits}</b>. If your model is not listed, contact us with the model number before you order.</p>
+    <h2>Frequently asked questions</h2>
+    <h3>Is this an original / OEM part?</h3>
+    <p>No. This is a <b>compatible / aftermarket replacement part</b>, not an original equipment manufacturer (OEM) product. We are not affiliated with or endorsed by ${p.brand}.</p>
+    <h3>What is your return policy?</h3>
+    <p>You may request a return within 30 days of delivery if the item is unused and in its original packaging. Used or installed parts cannot be returned.</p>
+    <h3>How long does shipping take?</h3>
+    <p>Orders are processed within 1–3 business days. Estimated delivery is typically 7–20 business days, with tracking once your order ships.</p>
+  </div>
+  ${relHTML}`;
   if(relHTML){
     const rg = el('#related-grid'); if(rg) rg.innerHTML = related.map(productCard).join('');
   }
@@ -275,7 +291,7 @@ function toast(msg){
 /* ---------- boot ---------- */
 document.addEventListener('DOMContentLoaded', ()=>{
   injectShell();
-  if(el('#grid')) renderGrid(el('#grid').dataset.filter || 'All', '');
+  if(el('#grid') && !el('#brand-filters')) renderGrid(el('#grid').dataset.filter || 'All', '');
   if(el('#featured-grid')) renderGrid('All','-featured'); // placeholder, overridden below
   if(el('#product-detail')) renderProductDetail();
   if(el('#cart-wrap')) renderCartPage();
